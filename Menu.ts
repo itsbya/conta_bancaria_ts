@@ -9,15 +9,15 @@ function mostrarMenu(): void {
     console.log("*****************************************************");
     console.log("                BANCO DO BRAZIL COM Z                ");
     console.log("*****************************************************");
-    console.log("1 - Criar Conta");
-    console.log("2 - Listar todas as Contas");
-    console.log("3 - Buscar Conta por Número");
-    console.log("4 - Atualizar Dados da Conta");
-    console.log("5 - Apagar Conta");
-    console.log("6 - Sacar");
-    console.log("7 - Depositar");
-    console.log("8 - Transferir");
-    console.log("9 - Sair");
+    console.log("1 - Criar Conta                                      ");
+    console.log("2 - Listar todas as Contas                           ");
+    console.log("3 - Buscar Conta por Número                          ");
+    console.log("4 - Atualizar Dados da Conta                         ");
+    console.log("5 - Apagar Conta                                     ");
+    console.log("6 - Sacar                                            ");
+    console.log("7 - Depositar                                        ");
+    console.log("8 - Transferir                                       ");
+    console.log("9 - Sair                                             ");
     console.log("*****************************************************");
 }
 
@@ -38,6 +38,26 @@ export function main(): void {
     // Instaciar Objetos da Classe Conta
 
     const c1 = new Conta(1, 1234, 'Bia', 1, 200000.00);
+
+    
+    c1.visualizar();
+
+    // Testes do Método Sacar
+    console.log("Sacar 100,00: ", c1.sacar(100.00));
+    console.log("Sacar 200000.00: ", c1.sacar(200000.00));
+    console.log("Sacar 0.00: ", c1.sacar(0.00));
+
+    // Testes do Método Depositar
+    console.log("Depositar -10.00: ");
+    c1.depositar(-10.00);
+
+    console.log("Depositar 500.00: ");
+    c1.depositar(500.00);
+
+    c1.visualizar();
+
+    // console.log("O Titular da Conta é: ", c1.titular);
+    // console.log("O Saldo da Conta é: ", c1.saldo);
 
     while (true) {
 
