@@ -1,11 +1,13 @@
-import leia from "readline-sync";
-import { colors } from "./src/util/colors";
-import { Conta } from "./src/model/Conta";
 
-leia.setDefaultOptions({ encoding: "utf8" });
+import { Conta } from "./src/model/Conta";
+import { Colors } from "./src/util/Colors";
+import { Input } from "./src/util/Input"
+
+
 
 
 function mostrarMenu(): void {
+    
     console.log("*****************************************************");
     console.log("                BANCO DO BRAZIL COM Z                ");
     console.log("*****************************************************");
@@ -28,6 +30,13 @@ function sobre(): void {
     console.log("Generation Brasil");
     console.log("github.com/itsbya");
     console.log("*****************************************************");
+}
+
+
+
+function keyPress(): void {
+    console.log(Colors.reset,"\nPressione enter para continuar...");
+    Input.prompt();
 }
 
 
@@ -61,12 +70,12 @@ export function main(): void {
 
     while (true) {
 
-        console.log(colors.bg.black, colors.fg.yellow);
+        console.log(Colors.bg.black, Colors.fg.yellow);
         mostrarMenu();
-        console.log(colors.reset);
+        console.log(Colors.reset);
 
-        process.stdout.write("Digite uma opção: ");
-        opcao = leia.questionInt("");
+        console.log("Digite uma opção: ");
+        opcao = Input.questionInt("");
 
         if (opcao === 9) {
             console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
@@ -74,38 +83,55 @@ export function main(): void {
             break;
         }
 
+
         switch (opcao) {
 
             case 1:
                 console.log("\nCriar Conta\n");
+
+                keyPress()
                 break;
 
             case 2:
                 console.log("\nListar todas as Contas\n");
+
+                keyPress()
                 break;
 
             case 3:
                 console.log("\nBuscar Conta por Número\n");
+
+                keyPress()
                 break;
 
             case 4:
                 console.log("\nAtualizar Dados da Conta\n");
+
+                keyPress()
                 break;
 
             case 5:
                 console.log("\nApagar Conta\n");
+
+                keyPress()
                 break;
 
             case 6:
                 console.log("\nSacar\n");
+
+                keyPress()
                 break;
 
             case 7:
                 console.log("\nDepositar\n");
+
+                keyPress()
                 break;
 
             case 8:
                 console.log("\nTransferir\n");
+
+                keyPress()
                 break;
 
             default:
@@ -113,7 +139,7 @@ export function main(): void {
         }
 
         console.log("\nPressione ENTER para continuar...");
-        leia.prompt();
+        Input.prompt();
     }
 }
 

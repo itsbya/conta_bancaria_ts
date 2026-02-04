@@ -1,3 +1,5 @@
+import iconv from "iconv-lite";
+
 /**
  * Classe Input - Solução para leitura de caracteres acentuados com o readline-sysnc no Windows
  *

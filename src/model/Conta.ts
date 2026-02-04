@@ -1,4 +1,5 @@
-import { colors } from "../util/colors";
+import { Colors } from "../util/Colors";
+
 
 export class Conta{
 
@@ -64,12 +65,12 @@ export class Conta{
     public sacar(valor: number): boolean {
 
         if(valor <= 0){
-            console.log(colors.fg.red, "O valor deve ser positivo", colors.reset);
+            console.log(Colors.fg.red, "O valor deve ser positivo", Colors.reset);
             return false;
         }
 
         if(valor > this._saldo){
-            console.log(colors.fg.red, "Saldo Insuficiente!", colors.reset);
+            console.log(Colors.fg.red, "Saldo Insuficiente!", Colors.reset);
             return false;
         }
 
@@ -80,7 +81,7 @@ export class Conta{
     public depositar(valor: number): void {
 
         if(valor <= 0)
-            console.log(colors.fg.red, "O valor deve ser positivo", colors.reset);
+            console.log(Colors.fg.red, "O valor deve ser positivo", Colors.reset);
         else
             this._saldo += valor;
     }
