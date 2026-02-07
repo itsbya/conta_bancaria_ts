@@ -1,42 +1,35 @@
-import { Conta } from "./Conta";
-
+import { Conta } from './Conta';
 
 export class ContaPoupanca extends Conta {
-
-    private _aniversarioConta: string;
-
-
-	constructor(
-        numero: number, 
-        agencia: number, 
-        titular: string, 
-        tipo: number, 
-        saldo: number,
-        aniversarioConta: string) {
-            super(numero, agencia, titular, tipo, saldo);
-            this._aniversarioConta = aniversarioConta;
-	}
-
-
-
-   // Métodos GET e SET específicos de Conta Poupança
-	public get aniversarioConta(): string {
-		return this._aniversarioConta;
-	}
-
     
-	public set aniversarioConta(value: string) {
-		this._aniversarioConta = value;
+	// Atributos específicos de Conta Poupança
+	private _aniversario: number
+
+	// Construtor com a chamada para a Super Classe
+	constructor(
+		numero: number,
+		agencia: number,
+		titular: string,
+		tipo: number,
+		saldo: number,
+		aniversario: number,
+	) {
+		super(numero, agencia, titular, tipo, saldo); // Chama o Construtor da Super Classe
+		this._aniversario = aniversario;
 	}
 
+	// Métodos GET e SET específicos da Classe Conta Poupanca
+	public get aniversario(): number {
+		return this._aniversario
+	}
 
-    // Métodos auxiliares 
-    public visualizar(): void{
-        super.visualizar();
-        console.log(`Data de aniversário da conta: R$ ${this._aniversarioConta}`);
-    }
+	public set aniversario(value: number) {
+		this._aniversario = value
+	}
 
-
-
-
+	// Método visualizar sobrescrito (Polimorfismo)
+	public visualizar(): void {
+		super.visualizar()
+		console.log(`Aniversário da conta: ${this._aniversario}`)
+	}
 }
