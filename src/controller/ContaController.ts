@@ -62,8 +62,10 @@ export class ContaController implements ContaRepository {
     } else console.log(Colors.fg.red, "\nConta não Encontrada!", Colors.reset);
   }
 
+
+
   // Métodos Bancários
-  sacar(numero: number, valor: number): void {
+  public sacar(numero: number, valor: number): void {
     const buscaConta = this.buscarNoArray(numero);
 
     if (buscaConta !== null) {
@@ -76,14 +78,39 @@ export class ContaController implements ContaRepository {
     } else console.log(Colors.fg.red, `\nA `, Colors.reset);
   }
 
-  depositar(numero: number, valor: number): void {
-    throw new Error("Method not implemented.");
-  }
-  transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
-    throw new Error("Method not implemented.");
+
+
+
+    public depositar(numero: number, valor: number): void {
+     const buscaConta = this.buscarNoArray(numero);
+
+        if(buscaConta !== null){
+            buscaConta.depositar(valor)  
+            console.log(Colors.fg.green, 
+                `\nO Depósito no valor de ${formatarMoeda(valor)} na Conta número ${numero} foi realizado com sucesso!`, Colors.reset); 
+        }else
+            console.log(Colors.fg.red, `\nA Conta número ${numero} não foi encontrada!`, Colors.reset);
+    }
+  
+
+
+
+  public transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
+    const buscaContaOrigem = this.buscarNoArray(numeroOrigem);
+        const buscaContaDestino = this.buscarNoArray(numeroDestino);
+
+        if(buscaContaOrigem !== null && buscaContaDestino !== null){
+            if(buscaContaOrigem.sacar(valor) === true){  
+                buscaContaDestino.depositar(valor);
+                console.log(Colors.fg.green, 
+                `\nA Transferência no valor de ${formatarMoeda(valor)} da Conta número ${numeroOrigem} 
+                 \npara a Conta número ${numeroDestino} foi realizado com sucesso!`, Colors.reset); 
+            }
+        }else
+            console.log(Colors.fg.red, `\nA Conta de origem e/ou destino não foram encontradas!`, Colors.reset);
   }
 
-  // Métodos Auxiliares
+
 
   public gerarNumero(): number {
     return ++this.numero;
